@@ -155,6 +155,10 @@ export default function App() {
                   <Shield className="w-4 h-4" />
                   <span>Verification</span>
                 </TabsTrigger>
+                TabsTrigger value="TokenShowcase" className="flex items-center gap-2">
+                  <Loader className="w-4 h-4" />
+                  <span>Hashing Process</span>
+                </TabsTrigger>
                 <TabsTrigger value="about" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
                   <Info className="w-4 h-4" />
                   <span>About Us</span>
