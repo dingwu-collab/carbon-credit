@@ -253,7 +253,7 @@ export function App() {
                {/* Image Container - Assumes image is in public folder */}
                <div className="bg-white rounded-lg p-2">
                  <img 
-                   src="public/picture/image copy 7.png" 
+                   src="/picture/image copy 7.png" 
                    alt="Verdi Proof of Concept Architecture" 
                    className="w-full h-auto rounded object-contain"
                  />
@@ -1090,4 +1090,5 @@ function IndustryItem({ icon: Icon, text, sub }: { icon: any, text: string, sub:
 //       </div>
 //     </li>
 //   )
+
 // }
