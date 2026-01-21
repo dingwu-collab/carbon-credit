@@ -293,7 +293,7 @@ export default function App() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-blue-600 rounded-lg flex items-center justify-center">
-                <a href="Landing.html">
+                <a href="https://carbon-credit-six.vercel.app/">
                     <Shield className="w-6 h-6 text-white" />
                 </a>
               </div>
