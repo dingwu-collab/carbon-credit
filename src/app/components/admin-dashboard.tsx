@@ -1,7 +1,7 @@
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Activity, Users, Coins, TrendingUp, Shield, Database } from "lucide-react";
-import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 const systemMetrics = [
   { name: "Jan", credits: 4500, transactions: 120, volume: 67500 },
@@ -29,78 +29,78 @@ export function AdminDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h2>System Overview</h2>
-        <p className="text-gray-600">Monitoring all layers of the carbon credit ecosystem</p>
+        <h2 className="dark:text-white">System Overview</h2>
+        <p className="text-gray-600 dark:text-slate-400">Monitoring all layers of the carbon credit ecosystem</p>
       </div>
 
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="p-6">
+        <Card className="p-6 dark:bg-slate-900 dark:border-slate-800">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total Credits Tokenized</p>
-              <p className="text-2xl mt-1">10,234</p>
+              <p className="text-sm text-gray-600 dark:text-slate-400">Total Credits Tokenized</p>
+              <p className="text-2xl mt-1 dark:text-white">10,234</p>
             </div>
             <Coins className="w-8 h-8 text-green-600" />
           </div>
           <div className="mt-4">
-            <Badge className="bg-green-100 text-green-800">+12% this month</Badge>
+            <Badge className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">+12% this month</Badge>
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-6 dark:bg-slate-900 dark:border-slate-800">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Active Users</p>
-              <p className="text-2xl mt-1">847</p>
+              <p className="text-sm text-gray-600 dark:text-slate-400">Active Users</p>
+              <p className="text-2xl mt-1 dark:text-white">847</p>
             </div>
             <Users className="w-8 h-8 text-blue-600" />
           </div>
           <div className="mt-4">
-            <Badge className="bg-blue-100 text-blue-800">289 SMEs</Badge>
+            <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">289 SMEs</Badge>
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-6 dark:bg-slate-900 dark:border-slate-800">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Trading Volume</p>
-              <p className="text-2xl mt-1">$153K</p>
+              <p className="text-sm text-gray-600 dark:text-slate-400">Trading Volume</p>
+              <p className="text-2xl mt-1 dark:text-white">$153K</p>
             </div>
             <TrendingUp className="w-8 h-8 text-purple-600" />
           </div>
           <div className="mt-4">
-            <Badge className="bg-purple-100 text-purple-800">289 trades</Badge>
+            <Badge className="bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400">289 trades</Badge>
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-6 dark:bg-slate-900 dark:border-slate-800">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Verification Rate</p>
-              <p className="text-2xl mt-1">98.3%</p>
+              <p className="text-sm text-gray-600 dark:text-slate-400">Verification Rate</p>
+              <p className="text-2xl mt-1 dark:text-white">98.3%</p>
             </div>
             <Shield className="w-8 h-8 text-orange-600" />
           </div>
           <div className="mt-4">
-            <Badge className="bg-orange-100 text-orange-800">High Trust</Badge>
+            <Badge className="bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400">High Trust</Badge>
           </div>
         </Card>
       </div>
 
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6">
+        <Card className="p-6 dark:bg-slate-900 dark:border-slate-800">
           <div className="flex items-center gap-2 mb-4">
-            <Activity className="w-5 h-5 text-gray-600" />
-            <h3>System Growth</h3>
+            <Activity className="w-5 h-5 text-gray-600 dark:text-slate-400" />
+            <h3 className="dark:text-white">System Growth</h3>
           </div>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={systemMetrics}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-slate-700" />
+              <XAxis dataKey="name" tick={{fill: 'currentColor'}} className="text-gray-600 dark:text-slate-400" />
+              <YAxis tick={{fill: 'currentColor'}} className="text-gray-600 dark:text-slate-400" />
+              <Tooltip contentStyle={{ backgroundColor: 'var(--tooltip-bg)', borderColor: 'var(--tooltip-border)' }} />
               <Legend />
               <Line type="monotone" dataKey="credits" stroke="#10b981" strokeWidth={2} name="Credits" />
               <Line type="monotone" dataKey="transactions" stroke="#3b82f6" strokeWidth={2} name="Transactions" />
@@ -108,10 +108,10 @@ export function AdminDashboard() {
           </ResponsiveContainer>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-6 dark:bg-slate-900 dark:border-slate-800">
           <div className="flex items-center gap-2 mb-4">
-            <Database className="w-5 h-5 text-gray-600" />
-            <h3>Registry Distribution</h3>
+            <Database className="w-5 h-5 text-gray-600 dark:text-slate-400" />
+            <h3 className="dark:text-white">Registry Distribution</h3>
           </div>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -136,16 +136,16 @@ export function AdminDashboard() {
       </div>
 
       {/* Verification Status */}
-      <Card className="p-6">
-        <h3 className="mb-4">Verification Pipeline Status</h3>
+      <Card className="p-6 dark:bg-slate-900 dark:border-slate-800">
+        <h3 className="mb-4 dark:text-white">Verification Pipeline Status</h3>
         <div className="space-y-4">
           {verificationStats.map((stat) => (
             <div key={stat.status}>
               <div className="flex justify-between items-center mb-2">
-                <span>{stat.status}</span>
-                <span className="text-sm text-gray-600">{stat.count} credits</span>
+                <span className="dark:text-slate-200">{stat.status}</span>
+                <span className="text-sm text-gray-600 dark:text-slate-400">{stat.count} credits</span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2">
                 <div
                   className={`h-2 rounded-full ${
                     stat.status === "Approved"
@@ -163,8 +163,8 @@ export function AdminDashboard() {
       </Card>
 
       {/* Recent Activity */}
-      <Card className="p-6">
-        <h3 className="mb-4">Recent Platform Activity</h3>
+      <Card className="p-6 dark:bg-slate-900 dark:border-slate-800">
+        <h3 className="mb-4 dark:text-white">Recent Platform Activity</h3>
         <div className="space-y-3">
           {[
             { action: "New credit tokenization", entity: "SolarTech Pte Ltd", time: "2 min ago", type: "mint" },
@@ -173,7 +173,7 @@ export function AdminDashboard() {
             { action: "Loan collateralized", entity: "CleanAir Industries", time: "1 hr ago", type: "loan" },
             { action: "Oracle data update", entity: "IoT Sensor Network", time: "2 hr ago", type: "oracle" },
           ].map((activity, idx) => (
-            <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+            <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-slate-800 rounded-lg">
               <div className="flex items-center gap-3">
                 <div
                   className={`w-2 h-2 rounded-full ${
@@ -189,11 +189,11 @@ export function AdminDashboard() {
                   }`}
                 />
                 <div>
-                  <p>{activity.action}</p>
-                  <p className="text-sm text-gray-600">{activity.entity}</p>
+                  <p className="dark:text-slate-200">{activity.action}</p>
+                  <p className="text-sm text-gray-600 dark:text-slate-400">{activity.entity}</p>
                 </div>
               </div>
-              <span className="text-sm text-gray-500">{activity.time}</span>
+              <span className="text-sm text-gray-500 dark:text-slate-500">{activity.time}</span>
             </div>
           ))}
         </div>

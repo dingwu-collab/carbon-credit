@@ -51,30 +51,30 @@ export function ESGScoring() {
   return (
     <div className="space-y-6">
       <div>
-        <h2>ESG Credibility & Impact Scoring</h2>
-        <p className="text-gray-600">AI-powered analysis of your environmental, social, and governance performance</p>
+        <h2 className="dark:text-white">ESG Credibility & Impact Scoring</h2>
+        <p className="text-gray-600 dark:text-slate-400">AI-powered analysis of your environmental, social, and governance performance</p>
       </div>
 
       {/* Overall Score */}
-      <Card className="p-6 bg-gradient-to-br from-green-50 to-blue-50">
+      <Card className="p-6 bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/30 dark:to-blue-950/30 dark:border-slate-800">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-gray-600 mb-2">Overall ESG Score</p>
+            <p className="text-gray-600 dark:text-slate-300 mb-2">Overall ESG Score</p>
             <div className="flex items-baseline gap-3">
-              <span className="text-5xl">{overallScore}</span>
-              <span className="text-xl text-gray-500">/ 100</span>
+              <span className="text-5xl dark:text-white">{overallScore}</span>
+              <span className="text-xl text-gray-500 dark:text-slate-400">/ 100</span>
             </div>
             <div className="flex items-center gap-2 mt-3">
-              <Badge className="bg-green-600 text-white">A- Rating</Badge>
-              <span className="text-sm text-gray-600">Top 25% in your sector</span>
+              <Badge className="bg-green-600 text-white dark:bg-green-700">A- Rating</Badge>
+              <span className="text-sm text-gray-600 dark:text-slate-400">Top 25% in your sector</span>
             </div>
           </div>
           <div className="text-right">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm">
-              <TrendingUp className="w-5 h-5 text-green-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+              <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
               <div>
-                <p className="text-sm text-gray-600">vs Last Quarter</p>
-                <p className="text-xl text-green-600">+7 points</p>
+                <p className="text-sm text-gray-600 dark:text-slate-300">vs Last Quarter</p>
+                <p className="text-xl text-green-600 dark:text-green-400">+7 points</p>
               </div>
             </div>
           </div>
@@ -84,37 +84,37 @@ export function ESGScoring() {
       {/* Impact Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {impactMetrics.map((metric, idx) => (
-          <Card key={idx} className="p-6">
+          <Card key={idx} className="p-6 dark:bg-slate-900 dark:border-slate-800">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-green-100 rounded-lg">
-                <metric.icon className="w-5 h-5 text-green-600" />
+              <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                <metric.icon className="w-5 h-5 text-green-600 dark:text-green-400" />
               </div>
-              <p className="text-sm text-gray-600">{metric.label}</p>
+              <p className="text-sm text-gray-600 dark:text-slate-400">{metric.label}</p>
             </div>
-            <p className="text-2xl mb-1">{metric.value}</p>
-            <Badge className="bg-green-100 text-green-800">{metric.change} YoY</Badge>
+            <p className="text-2xl mb-1 dark:text-white">{metric.value}</p>
+            <Badge className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">{metric.change} YoY</Badge>
           </Card>
         ))}
       </div>
 
       {/* ESG Breakdown */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6">
-          <h3 className="mb-6">ESG Category Breakdown</h3>
+        <Card className="p-6 dark:bg-slate-900 dark:border-slate-800">
+          <h3 className="mb-6 dark:text-white">ESG Category Breakdown</h3>
           <div className="space-y-5">
             {esgMetrics.map((metric, idx) => (
               <div key={idx}>
                 <div className="flex justify-between mb-2">
-                  <span>{metric.category}</span>
-                  <span className="font-medium">{metric.score}/100</span>
+                  <span className="dark:text-slate-300">{metric.category}</span>
+                  <span className="font-medium dark:text-slate-200">{metric.score}/100</span>
                 </div>
-                <Progress value={metric.score} className="h-2" />
+                <Progress value={metric.score} className="h-2 dark:bg-slate-700" />
               </div>
             ))}
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-6  dark:bg-slate-900 dark:border-slate-800">
           <h3 className="mb-4">Performance Radar</h3>
           <ResponsiveContainer width="100%" height={300}>
             <RadarChart data={esgMetrics}>
@@ -128,13 +128,13 @@ export function ESGScoring() {
       </div>
 
       {/* Peer Comparison */}
-      <Card className="p-6">
-        <h3 className="mb-4">Industry Benchmark Comparison</h3>
+      <Card className="p-6 dark:bg-slate-900 dark:border-slate-800">
+        <h3 className="mb-4 dark:text-white">Industry Benchmark Comparison</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={companyComparison}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis domain={[0, 100]} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-slate-700" />
+            <XAxis dataKey="name" tick={{ fill: 'currentColor' }} className="text-gray-600 dark:text-slate-400" />
+            <YAxis domain={[0, 100]} tick={{ fill: 'currentColor' }} className="text-gray-600 dark:text-slate-400" />
             <Tooltip />
             <Legend />
             <Bar dataKey="environmental" fill="#10b981" name="Environmental" />
@@ -145,18 +145,18 @@ export function ESGScoring() {
       </Card>
 
       {/* AI Insights */}
-      <Card className="p-6">
-        <h3 className="mb-4">AI-Powered Insights & Recommendations</h3>
+      <Card className="p-6 dark:bg-slate-900 dark:border-slate-800">
+        <h3 className="mb-4 dark:text-white">AI-Powered Insights & Recommendations</h3>
         <div className="space-y-4">
           {aiInsights.map((insight, idx) => (
             <div
               key={idx}
               className={`p-4 rounded-lg border-l-4 ${
                 insight.type === "warning"
-                  ? "bg-orange-50 border-orange-500"
+                  ? "bg-orange-50 border-orange-500 dark:bg-orange-950/20"
                   : insight.type === "success"
-                  ? "bg-green-50 border-green-500"
-                  : "bg-blue-50 border-blue-500"
+                  ? "bg-green-50 border-green-500 dark:bg-green-950/20"
+                  : "bg-blue-50 border-blue-500 dark:bg-blue-950/20"
               }`}
             >
               <div className="flex items-start gap-3">
@@ -165,18 +165,18 @@ export function ESGScoring() {
                 {insight.type === "info" && <Zap className="w-5 h-5 text-blue-600 mt-0.5" />}
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <h4>{insight.title}</h4>
+                    <h4 className="dark:text-slate-200">{insight.title}</h4>
                     <Badge
                       className={
                         insight.priority === "high"
-                          ? "bg-red-100 text-red-800"
-                          : "bg-gray-100 text-gray-800"
+                          ? "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400"
+                          : "bg-gray-100 text-gray-800 dark:bg-slate-700 dark:text-slate-300"
                       }
                     >
                       {insight.priority}
                     </Badge>
                   </div>
-                  <p className="text-sm text-gray-700">{insight.description}</p>
+                  <p className="text-sm text-gray-700 dark:text-slate-400">{insight.description}</p>
                 </div>
               </div>
             </div>
@@ -185,11 +185,11 @@ export function ESGScoring() {
       </Card>
 
       {/* Data Sources */}
-      <Card className="p-6 bg-gray-50">
-        <h4 className="mb-3">Data Sources & Standards</h4>
+      <Card className="p-6 bg-gray-50 dark:bg-slate-800 dark:border-slate-700">
+        <h4 className="mb-3 dark:text-white">Data Sources & Standards</h4>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {["GRI Standards", "TCFD Framework", "ISSB Standards", "IoT Sensors"].map((source) => (
-            <div key={source} className="flex items-center gap-2 text-sm">
+            <div key={source} className="flex items-center gap-2 text-sm dark:text-slate-300">
               <CheckCircle2 className="w-4 h-4 text-green-600" />
               <span>{source}</span>
             </div>
