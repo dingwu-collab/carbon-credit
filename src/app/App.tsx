@@ -268,7 +268,7 @@ import { AdminDashboard } from "./components/admin-dashboard";
 import { TradingPlatform } from "./components/trading-platform";
 import { ESGScoring } from "./components/esg-scoring";
 import { LoanCollateral } from "./components/loan-collateral";
-import { VerificationLayer } from "./components/verification-layer";
+// import { VerificationLayer } from "./components/verification-layer";
 import { AboutUs } from "./components/about-us";
 import { LayoutDashboard, TrendingUp, Award, DollarSign, Shield, Menu, X, Info, Bell, Search } from "lucide-react";
 import { Button } from "./components/ui/button";
@@ -347,7 +347,7 @@ export default function App() {
         {/* 2. Bind the state to the Tabs component */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           
-          <TabsList className="hidden md:grid w-full grid-cols-7">
+          <TabsList className="hidden md:grid w-full grid-cols-5">
             <TabsTrigger value="UserDashboard" className="flex items-center gap-2">
               <LayoutDashboard className="w-4 h-4" /> <span>Overview</span>
             </TabsTrigger>
@@ -363,12 +363,12 @@ export default function App() {
             <TabsTrigger value="loans" className="flex items-center gap-2">
               <DollarSign className="w-4 h-4" /> <span>Financing</span>
             </TabsTrigger>
-            <TabsTrigger value="verification" className="flex items-center gap-2">
+            {/* <TabsTrigger value="verification" className="flex items-center gap-2">
               <Shield className="w-4 h-4" /> <span>Verification</span>
-            </TabsTrigger>
-            <TabsTrigger value="about" className="flex items-center gap-2">
+            </TabsTrigger> */}
+            {/* <TabsTrigger value="about" className="flex items-center gap-2">
               <Info className="w-4 h-4" /> <span>About Us</span>
-            </TabsTrigger>
+            </TabsTrigger> */}
           </TabsList>
 
           {/* Mobile Navigation (Simplified for brevity - wire onClick handlers same as desktop if needed) */}
@@ -388,8 +388,8 @@ export default function App() {
           <TabsContent value="trading"> <TradingPlatform /> </TabsContent>
           <TabsContent value="esg"> <ESGScoring /> </TabsContent>
           <TabsContent value="loans"> <LoanCollateral /> </TabsContent>
-          <TabsContent value="verification"> <VerificationLayer /> </TabsContent>
-          <TabsContent value="about"> <AboutUs /> </TabsContent>
+          {/* <TabsContent value="verification"> <VerificationLayer /> </TabsContent> */}
+          {/* <TabsContent value="about"> <AboutUs /> </TabsContent> */}
         </Tabs>
       </div>
 
