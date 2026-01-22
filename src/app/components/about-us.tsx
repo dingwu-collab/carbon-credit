@@ -228,7 +228,7 @@ export function AboutUs() {
         <h3 className="mb-6 text-center">Our Technology Foundation</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { name: "Ethereum Layer 2", desc: "Scalable blockchain" },
+            { 'name': ["Kaia Blockchain\n" , "/ Ethereum Layer 2"], desc: "Scalable blockchain" },
             { name: "Hyperledger Besu", desc: "Permissioned network" },
             { name: "Chainlink Oracles", desc: "Real-world data" },
             { name: "IoT Integration", desc: "Automated verification" },
