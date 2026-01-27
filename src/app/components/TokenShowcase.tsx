@@ -104,132 +104,132 @@ if __name__ == "__main__":
     print(json.dumps(final_token.history, indent=2))
 `
 
-// export function TokenShowcase() {
-//   const [output, setOutput] = useState<string[]>([])
-//   const [isRunning, setIsRunning] = useState(false)
-//   const [pyodide, setPyodide] = useState<any>(null)
-//   const [isLoadingEngine, setIsLoadingEngine] = useState(true)
+export function TokenShowcase() {
+  const [output, setOutput] = useState<string[]>([])
+  const [isRunning, setIsRunning] = useState(false)
+  const [pyodide, setPyodide] = useState<any>(null)
+  const [isLoadingEngine, setIsLoadingEngine] = useState(true)
 
-//   // 1. Load Pyodide from CDN on Mount
-//   useEffect(() => {
-//     const loadPyodideEngine = async () => {
-//       try {
-//         // @ts-ignore
-//         const pyodideInstance = await window.loadPyodide({
-//           indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/"
-//         })
-//         setPyodide(pyodideInstance)
-//         setIsLoadingEngine(false)
-//       } catch (e) {
-//         console.error("Failed to load Pyodide", e)
-//       }
-//     }
+  // 1. Load Pyodide from CDN on Mount
+  useEffect(() => {
+    const loadPyodideEngine = async () => {
+      try {
+        // @ts-ignore
+        const pyodideInstance = await window.loadPyodide({
+          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/"
+        })
+        setPyodide(pyodideInstance)
+        setIsLoadingEngine(false)
+      } catch (e) {
+        console.error("Failed to load Pyodide", e)
+      }
+    }
 
-//     if (!window.document.getElementById('pyodide-script')) {
-//       const script = document.createElement('script')
-//       script.src = "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"
-//       script.id = 'pyodide-script'
-//       script.onload = loadPyodideEngine
-//       document.body.appendChild(script)
-//     } else {
-//       loadPyodideEngine()
-//     }
-//   }, [])
+    if (!window.document.getElementById('pyodide-script')) {
+      const script = document.createElement('script')
+      script.src = "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"
+      script.id = 'pyodide-script'
+      script.onload = loadPyodideEngine
+      document.body.appendChild(script)
+    } else {
+      loadPyodideEngine()
+    }
+  }, [])
 
-//   // 2. Function to Run the Python Code
-//   const runSimulation = async () => {
-//     if (!pyodide) return
-//     setIsRunning(true)
-//     setOutput([]) // Clear previous run
+  // 2. Function to Run the Python Code
+  const runSimulation = async () => {
+    if (!pyodide) return
+    setIsRunning(true)
+    setOutput([]) // Clear previous run
 
-//     try {
-//       // Redirect Python's "print" to our React state
-//       pyodide.setStdout({
-//         batched: (msg: string) => {
-//           setOutput((prev) => [...prev, msg])
-//         }
-//       })
+    try {
+      // Redirect Python's "print" to our React state
+      pyodide.setStdout({
+        batched: (msg: string) => {
+          setOutput((prev) => [...prev, msg])
+        }
+      })
       
-//       await pyodide.runPythonAsync(PYTHON_CODE)
-//     } catch (err) {
-//       setOutput((prev) => [...prev, `Error: ${err}`])
-//     } finally {
-//       setIsRunning(false)
-//     }
-//   }
+      await pyodide.runPythonAsync(PYTHON_CODE)
+    } catch (err) {
+      setOutput((prev) => [...prev, `Error: ${err}`])
+    } finally {
+      setIsRunning(false)
+    }
+  }
 
-//   return (
-//     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[600px]">
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[600px]">
       
-//       {/* LEFT: Code Viewer */}
-//       <Card className="flex flex-col overflow-hidden border-zinc-800 bg-zinc-950 text-zinc-300">
-//         <CardHeader className="bg-zinc-900/50 border-b border-zinc-800 py-3 flex flex-row items-center justify-between">
-//           <div className="flex items-center gap-2">
-//             <div className="w-3 h-3 rounded-full bg-red-500"/>
-//             <div className="w-3 h-3 rounded-full bg-yellow-500"/>
-//             <div className="w-3 h-3 rounded-full bg-green-500"/>
-//             <span className="ml-2 text-sm font-mono text-zinc-400">token_simulation.py</span>
-//           </div>
-//           <Button 
-//             size="sm" 
-//             onClick={runSimulation} 
-//             disabled={isLoadingEngine || isRunning}
-//             className="bg-emerald-600 hover:bg-emerald-700 text-white"
-//           >
-//             {isRunning ? <Loader2 className="w-4 h-4 animate-spin mr-2"/> : <Play className="w-4 h-4 mr-2"/>}
-//             {isLoadingEngine ? "Loading Engine..." : "Run Simulation"}
-//           </Button>
-//         </CardHeader>
-//         <CardContent className="flex-1 p-0 overflow-hidden relative group">
-//            <ScrollArea className="h-full w-full p-4 font-mono text-xs leading-relaxed text-blue-300/90">
-//              <pre>{PYTHON_CODE}</pre>
-//            </ScrollArea>
-//         </CardContent>
-//       </Card>
+      {/* LEFT: Code Viewer */}
+      <Card className="flex flex-col overflow-hidden border-zinc-800 bg-zinc-950 text-zinc-300">
+        <CardHeader className="bg-zinc-900/50 border-b border-zinc-800 py-3 flex flex-row items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500"/>
+            <div className="w-3 h-3 rounded-full bg-yellow-500"/>
+            <div className="w-3 h-3 rounded-full bg-green-500"/>
+            <span className="ml-2 text-sm font-mono text-zinc-400">token_simulation.py</span>
+          </div>
+          <Button 
+            size="sm" 
+            onClick={runSimulation} 
+            disabled={isLoadingEngine || isRunning}
+            className="bg-emerald-600 hover:bg-emerald-700 text-white"
+          >
+            {isRunning ? <Loader2 className="w-4 h-4 animate-spin mr-2"/> : <Play className="w-4 h-4 mr-2"/>}
+            {isLoadingEngine ? "Loading Engine..." : "Run Simulation"}
+          </Button>
+        </CardHeader>
+        <CardContent className="flex-1 p-0 overflow-hidden relative group">
+           <ScrollArea className="h-full w-full p-4 font-mono text-xs leading-relaxed text-blue-300/90">
+             <pre>{PYTHON_CODE}</pre>
+           </ScrollArea>
+        </CardContent>
+      </Card>
 
-//       {/* RIGHT: Terminal Output */}
-//       <Card className="flex flex-col overflow-hidden border-zinc-800 bg-black text-green-500 font-mono shadow-2xl">
-//         <CardHeader className="bg-zinc-900/50 border-b border-zinc-800 py-3 flex flex-row items-center justify-between">
-//           <div className="flex items-center gap-2">
-//              <Terminal className="w-4 h-4 text-zinc-500"/>
-//              <span className="text-sm text-zinc-500">Bash — Live Execution</span>
-//           </div>
-//           <Button 
-//             variant="ghost" 
-//             size="icon" 
-//             className="h-6 w-6 text-zinc-500 hover:text-white"
-//             onClick={() => setOutput([])}
-//           >
-//             <RotateCcw className="w-3 h-3"/>
-//           </Button>
-//         </CardHeader>
-//         <CardContent className="flex-1 p-4 overflow-y-auto bg-black/95">
-//           {output.length === 0 ? (
-//             <div className="h-full flex flex-col items-center justify-center text-zinc-700 space-y-4">
-//                <div className="p-4 rounded-full bg-zinc-900/50">
-//                   <Play className="w-8 h-8 opacity-50"/>
-//                </div>
-//                <p>Click "Run Simulation" to execute Smart Contract</p>
-//             </div>
-//           ) : (
-//             <div className="space-y-1">
-//               {output.map((line, i) => (
-//                 <div key={i} className="break-all whitespace-pre-wrap animate-in fade-in slide-in-from-left-2 duration-300">
-//                   <span className="text-zinc-600 mr-2">$</span>
-//                   {line}
-//                 </div>
-//               ))}
-//               {/* Blinking Cursor */}
-//               {!isRunning && output.length > 0 && (
-//                 <div className="mt-4 flex items-center gap-2 text-emerald-600">
-//                   <CheckCircle2 className="w-4 h-4" />
-//                   <span className="text-sm">Process Finished</span>
-//                 </div>
-//               )}
-//             </div>
-//           )}
-//         </CardContent>
-//       </Card>
-//     </div>
-//   )
-// }
+      {/* RIGHT: Terminal Output */}
+      <Card className="flex flex-col overflow-hidden border-zinc-800 bg-black text-green-500 font-mono shadow-2xl">
+        <CardHeader className="bg-zinc-900/50 border-b border-zinc-800 py-3 flex flex-row items-center justify-between">
+          <div className="flex items-center gap-2">
+             <Terminal className="w-4 h-4 text-zinc-500"/>
+             <span className="text-sm text-zinc-500">Bash — Live Execution</span>
+          </div>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="h-6 w-6 text-zinc-500 hover:text-white"
+            onClick={() => setOutput([])}
+          >
+            <RotateCcw className="w-3 h-3"/>
+          </Button>
+        </CardHeader>
+        <CardContent className="flex-1 p-4 overflow-y-auto bg-black/95">
+          {output.length === 0 ? (
+            <div className="h-full flex flex-col items-center justify-center text-zinc-700 space-y-4">
+               <div className="p-4 rounded-full bg-zinc-900/50">
+                  <Play className="w-8 h-8 opacity-50"/>
+               </div>
+               <p>Click "Run Simulation" to execute Smart Contract</p>
+            </div>
+          ) : (
+            <div className="space-y-1">
+              {output.map((line, i) => (
+                <div key={i} className="break-all whitespace-pre-wrap animate-in fade-in slide-in-from-left-2 duration-300">
+                  <span className="text-zinc-600 mr-2">$</span>
+                  {line}
+                </div>
+              ))}
+              {/* Blinking Cursor */}
+              {!isRunning && output.length > 0 && (
+                <div className="mt-4 flex items-center gap-2 text-emerald-600">
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span className="text-sm">Process Finished</span>
+                </div>
+              )}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
