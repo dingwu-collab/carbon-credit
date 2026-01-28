@@ -125,7 +125,7 @@ export default function App() {
                 <DollarSign className="w-4 h-4" /> <span>Financing</span>
               </TabsTrigger>
               <TabsTrigger value="TokenShowcase" className="flex items-center gap-2 data-[state=active]:dark:bg-slate-800 data-[state=active]:dark:text-white">
-                <Info className="w-4 h-4" /> <span>Code</span>
+                <Info className="w-4 h-4" /> <span>Smart Contract</span>
               </TabsTrigger>
             </TabsList>
 
